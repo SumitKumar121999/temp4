@@ -15,7 +15,7 @@ pipeline {
             }
         }
 
-        stage('Build and Deploy') {
+        stage('Build') {
             steps {
                 script {
                     // Get code from a GitHub repository
@@ -29,7 +29,13 @@ pipeline {
 
                     // Build Docker image
                     def dockerImage = docker.build("springboot-deploy:${DOCKER_IMAGE_TAG}")
+                }
+            }
+        }
 
+        stage('Deploy') {
+            steps {
+                script {
                     // Stop and remove existing container, if any
                     sh "docker stop springboot-deploy || true && docker rm springboot-deploy || true"
 
