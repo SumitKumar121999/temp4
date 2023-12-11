@@ -10,7 +10,7 @@ pipeline {
             steps {
                 script {
                     // Get code from a GitHub repository
-                    git branch: 'main', url: 'https://github.com/SumitKumar121999/temp3.git'
+                    git branch: 'main', url: 'https://github.com/SumitKumar121999/temp4.git'
 
                     // Build Docker image
                     def dockerImage = docker.build("springboot-deploy:${DOCKER_IMAGE_TAG}")
